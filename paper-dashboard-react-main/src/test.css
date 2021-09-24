@@ -1,0 +1,21 @@
+
+.order-summary {
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+.app-container{
+  height: auto!important; 
+  margin-bottom: 3%;
+}
+.order-detail{
+  display: flex;
+  margin: auto;
+  width: 90%;
+  justify-content: space-between;
+  color: #51cbce !important;
+ 
+}
