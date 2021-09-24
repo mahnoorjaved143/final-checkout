@@ -1,9 +1,9 @@
 import CheckoutPage from './components/CheckoutPage';
-import Navbar from "components//Navbar.js";
+import Navbar from "components/Navbar.js";
 
 function App() {
   return (
-    <div >
+    <div className="container">
     <Navbar/>
     <CheckoutPage></CheckoutPage>
     </div>

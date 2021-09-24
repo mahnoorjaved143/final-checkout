@@ -17,5 +17,10 @@
   width: 90%;
   justify-content: space-between;
   color: #51cbce !important;
- 
+}
+.body-container{
+  background: #f7f7f7f7;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
