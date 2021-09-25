@@ -18,7 +18,7 @@ margin-bottom: 3%;
 .order-detail{
   display: flex;
   margin: auto;
-  width: 90%;
+  width: 90%; 
   justify-content: space-between;
   color: #51cbce !important;
 }
