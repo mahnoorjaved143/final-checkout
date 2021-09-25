@@ -24,13 +24,16 @@ import "bootstrap/dist/css/bootstrap.css";
 import "assets/scss/paper-dashboard.scss?v=1.3.0";
 import "assets/demo/demo.css";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-
+import "../node_modules/font-awesome/css/font-awesome.min.css";
 import App from "./App";
-
+import Success from "components/success.js";
+import Failure from "components/Failure.js";
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/checkout" render={(props) => <App {...props} />} />
+      <Route path="/success"> <Success /></Route>
+      <Route path="/failure"> <Failure /></Route>
       <Redirect to="/checkout" />
     </Switch>
   </BrowserRouter>,
