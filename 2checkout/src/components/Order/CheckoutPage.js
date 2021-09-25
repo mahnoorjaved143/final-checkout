@@ -18,20 +18,22 @@ class CheckoutPage extends Component {
     super(props);
     this.state = {
       username: 'FaadilAli',
-      email: 'faadilali@gmail.com',
+      email: 'codeveloper3@gmail.com',
       firstName: 'Faadil',
       lastName: 'Ali',
       address: 'Musherib Street 47',
       city: 'Alkhor',
       country: 'Qatar',
-      contactNumber: '097431310244',
-      zipCode: '122001',
-      publisherKey: '3D7C3B93-4588-492D-8762-1FE363B43A4E',
+      phone: '097431310244',
+      zip: '122001',
+      company: "Storak",
       merchantCode: '251474674377',
       productDetail: {
-        productName: 'Michael kors Handbag',
-        productPrice: 2600,
-        shipping: 200,
+        productName: 'Michael Grey Handbag',
+        productPrice: 2200,
+        shipping: 0,
+        quantity: 1,
+        productId: 144
       },
     };
   }
@@ -44,7 +46,10 @@ class CheckoutPage extends Component {
 
   submitHandler = event => {
     event.preventDefault();
-    console.log(this.state);
+    console.log("state", this.state)
+    // an other way to redirect Page
+    let searchQuery = `merchant=${this.state.merchantCode}&tpl=default&prod=${this.state.productDetail.productId}&qty=${this.state.productDetail.quantity}`
+    window.location.href = `https://secure.2checkout.com/checkout/buy?${searchQuery}`
   };
 
   render() {
@@ -56,10 +61,11 @@ class CheckoutPage extends Component {
       address,
       city,
       country,
-      contactNumber,
-      zipCode,
+      phone,
+      zip,
       productDetail,
       merchantCode,
+      company
     } = this.state;
     const totalAmount = productDetail.productPrice + productDetail.shipping;
     return (
@@ -72,12 +78,17 @@ class CheckoutPage extends Component {
                   <CardTitle tag="h5">Checkout Page</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <Form action="https://www.2checkout.com/order/checkout" method="post">
+                  {/* <Form onSubmit={this.submitHandler}> */}
+                  <Form action='https://secure.2checkout.com/checkout/buy' method='get'>
                     <Row>
                       <Col className="pr-1" md="6">
-                        <Input type="hidden" name="mid" value={merchantCode} />
-                        <Input type="hidden" name="mode" value="2CO" />
-                        <Input type="hidden" name="demo" value="Y" />
+                        <Input type="hidden" name="merchant" value={merchantCode} />
+                        <Input type="hidden" name="tpl" value="default" />
+                        <Input type="hidden" name="prod" value={productDetail.productId} />
+                        <Input type="hidden" name="qty" value={productDetail.quantity} />
+                        <Input type="hidden" name="name" value="product" />
+                        <Input type="hidden" name="company" value={company} />
+                        
                         <FormGroup>
                           <label>Username </label>
                           <Input
@@ -173,8 +184,8 @@ class CheckoutPage extends Component {
                           <Input
                             placeholder="ZIP Code"
                             type="number"
-                            name="zipCode"
-                            value={zipCode}
+                            name="zip"
+                            value={zip}
                             onChange={this.inputHandler}
                           />
                         </FormGroup>
@@ -189,8 +200,8 @@ class CheckoutPage extends Component {
                               <Input
                                 placeholder="Phone Number"
                                 type="number"
-                                name="contactNumber"
-                                value={contactNumber}
+                                name="phone"
+                                value={phone}
                                 onChange={this.inputHandler}
                               />
                             </FormGroup>

@@ -1,0 +1,8 @@
+website link: https://knowledgecenter.2checkout.com/Documentation/09Test_ordering_system/01Test_payment_methods
+select JCB card 
+name:  John Doe
+JCB: 3566111111111113
+expiry: 12/2222  //can by any number
+security-code: 123  // can be any three digit
+
+
